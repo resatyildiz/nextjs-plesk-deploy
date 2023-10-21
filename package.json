@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "copy": "mv ./.next/static ./.next/standalone/; cp -r ./public ./.next/standalone/",
+    "cleanup": "rm -r node_modules",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:local": "dotenv -e .env.local -- npx prisma migrate dev",
+    "pull:local": "dotenv -e .env.local -- npx prisma db pull"
   },
   "dependencies": {
     "@types/node": "20.5.7",
@@ -19,6 +23,7 @@
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sharp": "^0.32.6",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   }
